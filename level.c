@@ -63,24 +63,53 @@ void update_birdy_position()
   if(birdyLeft && birdy->x > 0)
   {
     birdy->x--;
-    simple_ramtilemap[0][0]=0x2D;
-  }else simple_ramtilemap[0][0]=0x91;
+    simple_ramtilemap[27][13]=0x2D;
+    simple_ramtilemap[27][14]=0x26;
+    simple_ramtilemap[27][15]=0x27;
+    simple_ramtilemap[27][16]=0x35;
+  }else {
+    simple_ramtilemap[27][13]=0x17E;
+    simple_ramtilemap[27][14]=0x17E;
+    simple_ramtilemap[27][15]=0x17E;
+    simple_ramtilemap[27][16]=0x17E;
+  }
 
   if(birdyRight && birdy->x < (640 - birdy->w)) {
     birdy->x++;
-    simple_ramtilemap[0][20]=0x33;
-  }else simple_ramtilemap[0][20]=0x91;
+    simple_ramtilemap[27][21]=0x33;
+    simple_ramtilemap[27][22]=0x2A;
+    simple_ramtilemap[27][23]=0x28;
+    simple_ramtilemap[27][24]=0x29;
+    simple_ramtilemap[27][25]=0x35;
+  }else {
+    simple_ramtilemap[27][21]=0x17E;
+    simple_ramtilemap[27][22]=0x17E;
+    simple_ramtilemap[27][23]=0x17E;
+    simple_ramtilemap[27][24]=0x17E;
+    simple_ramtilemap[27][25]=0x17E;
+  }
 
   if(birdyUp && birdy->y > 0) {
     birdy->y--;
-    simple_ramtilemap[0][40]=0x36;
-  }else simple_ramtilemap[0][40]=0x91;
+    simple_ramtilemap[26][18]=0x36;
+    simple_ramtilemap[26][19]=0x31;
+  }else {
+    simple_ramtilemap[26][18]=0x17E;
+    simple_ramtilemap[26][19]=0x17E;
+  }
 
   if(birdyDown && birdy->y < (480 - birdy->h)) {
     birdy->y++;
-    simple_ramtilemap[0][60]=0x25;
-  }else simple_ramtilemap[0][60]=0x91;
-
+    simple_ramtilemap[28][17]=0x25;
+    simple_ramtilemap[28][18]=0x30;
+    simple_ramtilemap[28][19]=0x38;
+    simple_ramtilemap[28][20]=0x2F;
+  }else {
+    simple_ramtilemap[28][17]=0x17E;
+    simple_ramtilemap[28][18]=0x17E;
+    simple_ramtilemap[28][19]=0x17E;
+    simple_ramtilemap[28][20]=0x17E;
+  }
 }
 
 void level_frame()
@@ -127,7 +156,7 @@ void level_init()
 
   background = tilemap_new(
   		simple_bg_tset,640,480,
-  		TMAP_HEADER(TMAP_SIMPLE_W,TMAP_SIMPLE_H,TSET_16,TMAP_U8),
+  		TMAP_HEADER(TMAP_SIMPLE_W,TMAP_SIMPLE_H,TSET_16,TMAP_U16),
   		simple_ramtilemap
   		);
   start_frame=vga_frame;
